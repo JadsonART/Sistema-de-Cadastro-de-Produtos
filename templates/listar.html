@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lista de Produtos</title></head>
+<body>
+    <h1>Produtos</h1>
+    <a href="/produtos/cadastrar">Cadastrar Novo Produto</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Descrição</th>
+            <th>Preço Compra</th>
+            <th>Preço Venda</th>
+            <th>Data Criação</th>
+            <th>Ações</th>
+        </tr>
+        {% for p in regs %}
+        <tr>
+            <td>{{ p[0] }}</td>
+            <td>{{ p[1] }}</td>
+            <td>{{ p[2] }}</td>
+            <td>{{ p[3] }}</td>
+            <td>{{ p[4] }}</td>
+            <td>
+                <a href="/produtos/editar/{{ p[0] }}">Editar</a>
+                <form method="POST" action="/produtos/deletar/{{ p[0] }}" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Tem certeza que deseja excluir?')">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
